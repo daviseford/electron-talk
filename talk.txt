@@ -1,0 +1,81 @@
+, thanks for coming out. I'm Davis Ford, I'm a developer with SIG. It's pretty cool to see some of you guys and girls from Slack. So I'm here to talk about Electron, and I'm also going to talk a little bit about React, just because I can.
+
+So what is Electron? electron is a framework for creating native applications using web technologies. Electron is used by companies like Slack, Atom, and Basecamp.
+
+Electron lets you develop using tools that are familiar to a web developer, but without the sandboxed--  boxed constraints of a modern browser.
+
+What is Electron good for?
+
+Web developers who want to work with the filesystem
+Application developers who want a native look and feel on multiple OS's
+Easy auto-update capability built in
+Write CSS and Javascript once for Chromium - no compatibility issues
+Native binds to things like notifications, tray icons, on mac you can adjust the bounce of the icon in the dock
+You can sign the application and submit and launch them from the relative app stores
+Access to camera/microphone
+Shell operations
+Easy installer (with a couple modules)
+Access to the NPM ecosystem
+Dev tools - Devtron, require modules inside the console
+In general, the developer gets more power over the user, for better or worse.
+No more ajax requests being denied because of Cross Origin Site Policies
+
+
+Auto Updater
+Dialogs
+Push Notifications
+ES6-ES7Async/await
+Mac app store
+
+
+Talk about electron quick start
+
+** PREREQUISITE - open iterm with 2 vertically split panels, cd both into Documents/electron-talk/electron-quick-start and npm i
+[ open electron quick-start ] npm start
+[ open vim ] vim index.html, change title to Hi BAH! and refresh electron
+
+So, this is pretty neat already. This is a google chrome window, basically (it's a little different, but I'll get to that in a minute). You can write your CSS just once, and you only need to worry about Chrome's support for Javascript. Every user will have the same experience on Windows, Mac, or Linux. The cool thing about Electron is that you can do this:
+
+[vim new.txt] Add some text
+
+Now back in our Electron homepage, we'll just require fs
+
+`````
+<script>
+const fs = require('fs');
+const fileContents = fs.readFileSync('./new.txt);
+document.write(fileContents)
+</script>
+`````
+
+[refresh page]
+
+So at this point, you can proceed to build your application like normal. It's cross-platform, with a standardized development experience.
+
+You'll notice that this is pretty barebones - [ type ls ]. For a lot of development teams, this is where you'd throw in your Angular, React, whatever you enjoy doing. jQuery, if you're into that.
+
+Let's take a look at a more souped-up version of electron - electron react boilerplate.
+
+It's a beautiful package that gives you React/Redux/Hot Module reloading, etc, all set up and ready to use out of the box.
+
+Hot module reloading, in particular, makes electron and react development so easy. Just amazingly easy. Watch this.
+
+[open arborist]
+
+So, this application is actually kinda the reason I'm talking to you guys today. This is a real application that has users, and a real world use. It's basically a file-sorter that helps 360 degree filmmakers sort their camera files after a long shoot. So if you think about how a 360 video is built, there's usually 4 or more cameras running at the same time. Let's say you're shooting some real estate, you'll probably end up with 60-70 files on each camera. When you go home at the end of the day, now you're facing manually sorting through hundreds of video files, matching them up with each other, ignoring random test shots, etc. etc. 
+
+So, my friend has a patent on a 360 degree camera mount, and he came to me with this problem. I said no worries, sounds pretty doable, and I whipped up a quick python script in a couple days that read the files and sorted them. Now, because python is a pretty strong language for file operations, this application wasn't that difficult to deliver. THe problem was - it was command line. No one was going to download python, install it, make sure the path is working, and then run a command line utility to sort files. Sorry, that's not a realistic expectation of the end-user in this day and age.
+
+So I set about making a GUI for this applciation. I tried PytQT5, I tried PyQT4, I tried TkInter, and I tried just about every current version of python GUI libraries I could find. They were all riddled with issues, didn't compile cross-platform, and they frankly were pretty ugly by default. I tried for a few weeks to get everything working, and I eventually just fizzled out.
+
+And then I had a thought - what about electron? Within a few days, I re-wrote this on top of the electron-react-boilerplate. I am able to distribute this to anyone, anywhere, and I know that it'll work on their computer. 
+
+Features of
+
+Cool little tip: you can require your modules in a lazy manner to improve your startup times. You know how typically you end up with 5-6 imports at the top of your files? Instead of doing that, you can import them within a function, ensuring they are only loading when needed. Just a cool little tip.
+
+  const fs = require('fs')
+      fs.readFile('./../features.txt', 'utf8', (err, results)=>{
+        results.split('\n').map(x=>document.write(`<h2>${x}</h2>`))
+      })
+

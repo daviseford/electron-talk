@@ -1,0 +1,18 @@
+Cross Platform Desktop Application
+Mac/Windows/Linux
+Access to the filesystem with Node
+ES2015
+Native Dialogs
+Notifications
+Tray Icons
+Auto Update
+NPM Ecosystem
+Chromium Browser
+Offline First
+Devtron (advanced debugger)
+Electron Ecosystem
+LESS/SASS (if you're into that)
+Access to webcam/microphone
+Mac/Windows App Store
+Power Blocking (keep computer from entering low-battery mode)
+Clipboard operations (push to clipboard)

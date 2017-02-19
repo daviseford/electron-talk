@@ -1,6 +1,5 @@
-Cross Platform Desktop Application
-Mac/Windows/Linux
 Access to the filesystem with Node
+Mac/Windows/Linux
 ES2015
 Native Dialogs
 Notifications
@@ -16,3 +15,4 @@ Access to webcam/microphone
 Mac/Windows App Store
 Power Blocking (keep computer from entering low-battery mode)
 Clipboard operations (push to clipboard)
+Async/Await
